@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henderson Survey Brantford | Homes, Schools & Amenities</title>
+<meta name="description" content="Discover Henderson Survey, Brantford's premier neighborhood. Browse homes for sale, top schools, parks, and local amenities.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:#0f172a}
+a{text-decoration:none}
+header{background:white;border-bottom:1px solid #e2e8f0;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,#059669,#0d9488);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.logo-text h1{font-size:20px;font-weight:700;color:#0f172a}
+.logo-text p{font-size:12px;color:#64748b}
+nav{display:flex;align-items:center;gap:24px}
+nav a{color:#475569;font-weight:500;font-size:15px}
+.btn-green{background:#059669;color:white!important;padding:10px 20px;border-radius:8px;font-weight:600}
+.hero{position:relative;height:580px;overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(15,23,42,0.92),rgba(15,23,42,0.5));z-index:1}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:0 32px;margin:0 auto;height:100%;display:flex;flex-direction:column;justify-content:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(5,150,105,0.9);color:white;padding:8px 16px;border-radius:999px;margin-bottom:24px;font-size:14px;font-weight:600}
+.hero h2{font-size:56px;font-weight:800;color:white;margin-bottom:20px;line-height:1.15}
+.hero p{font-size:20px;color:#cbd5e1;margin-bottom:32px;line-height:1.6;max-width:560px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#059669;color:white;padding:14px 28px;border-radius:12px;font-weight:700;font-size:16px}
+.btn-secondary{background:rgba(255,255,255,0.12);color:white;padding:14px 28px;border-radius:12px;font-weight:600;font-size:16px;border:2px solid rgba(255,255,255,0.3)}
+.stats{background:white;border-bottom:1px solid #e2e8f0;padding:24px 32px}
+.stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-card{padding:16px;border-radius:12px;background:#f8fafc;text-align:center}
+.stat-value{font-size:28px;font-weight:800;color:#0f172a}
+.stat-label{font-size:14px;color:#64748b;margin-bottom:4px}
+.stat-change{font-size:12px;color:#059669;font-weight:600}
+section{padding:80px 32px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:48px}
+.section-header h2{font-size:40px;font-weight:800;color:#0f172a;margin-bottom:16px}
+.section-header p{font-size:18px;color:#64748b}
+.bg-gray{background:#f8fafc}
+.bg-white{background:white}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px}
+.card{background:white;padding:32px;border-radius:20px;box-shadow:0 4px 6px rgba(0,0,0,0.05)}
+.card-icon{font-size:40px;margin-bottom:16px}
+.card h3{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px}
+.card p{color:#64748b;line-height:1.7}
+.boundaries{background:#ecfdf5;padding:32px;border-radius:20px;border:2px solid #a7f3d0}
+.boundaries h3{font-size:22px;font-weight:700;color:#0f172a;text-align:center;margin-bottom:24px}
+.boundaries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.boundary-item{background:white;padding:16px;border-radius:12px;font-size:14px;font-weight:600;color:#047857}
+.listings-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
+.listings-header h2{font-size:40px;font-weight:800;color:#0f172a;margin-bottom:8px}
+.listings-header p{color:#64748b}
+.listings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.listing-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid #e2e8f0}
+.listing-img{position:relative;height:220px;overflow:hidden}
+.listing-img img{width:100%;height:100%;object-fit:cover}
+.listing-badge{position:absolute;top:12px;right:12px;background:#059669;color:white;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600}
+.listing-body{padding:24px}
+.listing-price{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:4px}
+.listing-address{color:#64748b;font-weight:500;margin-bottom:16px}
+.listing-specs{display:flex;gap:16px;font-size:14px;color:#64748b;margin-bottom:20px}
+.listing-specs strong{color:#0f172a}
+.btn-dark{display:block;background:#0f172a;color:white;padding:12px;border-radius:10px;font-weight:600;text-align:center}
+.sales{padding:60px 32px;background:#0f172a}
+.sales-inner{max-width:1100px;margin:0 auto}
+.sales h2{font-size:28px;font-weight:700;color:white;margin-bottom:32px}
+.sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sale-card{background:#1e293b;padding:24px;border-radius:16px}
+.sale-price{font-size:26px;font-weight:800;color:#34d399;margin-bottom:4px}
+.sale-address{color:#94a3b8;margin-bottom:8px}
+.sale-meta{display:flex;justify-content:space-between;font-size:13px}
+.sale-date{color:#64748b}
+.sale-days{background:rgba(52,211,153,0.15);color:#34d399;padding:2px 8px;border-radius:999px;font-weight:600}
+.schools-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.school-card{padding:32px;border-radius:20px}
+.school-card.blue{background:#eff6ff;border:2px solid #bfdbfe}
+.school-card.purple{background:#f5f3ff;border:2px solid #ddd6fe}
+.school-name{font-size:22px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.school-type{font-size:14px;color:#64748b;margin-bottom:20px}
+.school-facts{list-style:none;margin-bottom:24px}
+.school-facts li{display:flex;gap:10px;margin-bottom:10px;color:#475569}
+.check-blue{color:#1d4ed8;font-weight:700}
+.check-purple{color:#7c3aed;font-weight:700}
+.btn-blue{display:block;border:2px solid #1d4ed8;color:#1d4ed8;padding:12px;border-radius:10px;font-weight:600;text-align:center;background:white}
+.btn-purple{display:block;border:2px solid #7c3aed;color:#7c3aed;padding:12px;border-radius:10px;font-weight:600;text-align:center;background:white}
+.amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.amenity-card{padding:24px;border-radius:20px}
+.amenity-icon{font-size:36px;margin-bottom:12px}
+.amenity-title{font-size:18px;font-weight:700;color:#0f172a;margin-bottom:8px}
+.amenity-desc{font-size:14px;color:#64748b;margin-bottom:16px}
+.cta{padding:80px 32px;background:linear-gradient(135deg,#059669,#0d9488)}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center}
+.cta h2{font-size:44px;font-weight:800;color:white;margin-bottom:20px}
+.cta p{font-size:18px;color:#d1fae5;margin-bottom:40px;line-height:1.7}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:white;color:#059669;padding:16px 32px;border-radius:12px;font-weight:700;font-size:16px}
+.btn-outline{background:rgba(255,255,255,0.15);color:white;padding:16px 32px;border-radius:12px;font-weight:700;font-size:16px;border:2px solid rgba(255,255,255,0.4)}
+.cta-note{margin-top:32px;color:#a7f3d0;font-size:14px}
+footer{background:#020617;color:white;padding:48px 32px}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:40px}
+.footer-col h4{font-size:16px;font-weight:700;margin-bottom:12px}
+.footer-col p,.footer-col a{color:#94a3b8;font-size:14px;line-height:1.8}
+.footer-col ul{list-style:none}
+.footer-col ul a:hover{color:#34d399}
+.footer-bottom{max-width:1100px;margin:0 auto;border-top:1px solid #1e293b;padding-top:24px;text-align:center;color:#475569;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">📍</div>
+    <div class="logo-text">
+      <h1>Henderson Survey</h1>
+      <p>Brantford's Premier Neighborhood</p>
+    </div>
+  </div>
+  <nav>
+    <a href="#homes">Homes</a>
+    <a href="#about">About</a>
+    <a href="#schools">Schools</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#contact" class="btn-green">Contact Ryan</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-overlay"></div>
+  <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&h=1080&fit=crop" alt="Henderson Survey neighborhood">
+  <div class="hero-content">
+    <div class="badge">⭐ Brantford's Most Sought-After Neighborhood</div>
+    <h2>Welcome to<br>Henderson Survey</h2>
+    <p>A hidden gem in Brantford's north end. Quiet streets, mature trees, top-rated schools, and a close-knit community where families thrive.</p>
+    <div class="hero-btns">
+      <a href="#homes" class="btn-primary">View Active Listings →</a>
+      <a href="#contact" class="btn-secondary">Free Home Valuation</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-value">$725K</div><div class="stat-label">Avg Home Price</div><div class="stat-change">+8% YoY</div></div>
+    <div class="stat-card"><div class="stat-value">9 days</div><div class="stat-label">Days on Market</div><div class="stat-change">Fast moving</div></div>
+    <div class="stat-card"><div class="stat-value">80%</div><div class="stat-label">Homeownership</div><div class="stat-change">Stable community</div></div>
+    <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Active Listings</div><div class="stat-change">Low inventory</div></div>
+  </div>
+</div>
+
+<section id="about" class="bg-gray">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Discover Henderson Survey</h2>
+      <p>Nestled in Brantford's north end, Henderson Survey has been the city's hidden gem for over 60 years</p>
+    </div>
+    <div class="cards-3">
+      <div class="card"><div class="card-icon">🏠</div><h3>Established Community</h3><p>Most homes built before the 1960s, with beautiful mature trees and well-maintained properties. 4+ bedroom homes are the standard.</p></div>
+      <div class="card"><div class="card-icon">👨‍👩‍👧‍👦</div><h3>Family-Oriented</h3><p>Close-knit community where neighbors know each other. Multiple parks, playgrounds, and excellent schools within walking distance.</p></div>
+      <div class="card"><div class="card-icon">🗺️</div><h3>Prime Location</h3><p>Minutes to Highway 403, downtown Brantford, shopping, and dining. Easy commute to Hamilton, Toronto, and London.</p></div>
+    </div>
+    <div class="boundaries">
+      <h3>Neighborhood Boundaries</h3>
+      <div class="boundaries-grid">
+        <div class="boundary-item">🛣️ Hwy 403 (South)</div>
+        <div class="boundary-item">🛤️ King George Rd (West)</div>
+        <div class="boundary-item">🏘️ St. Paul Ave (North)</div>
+        <div class="boundary-item">🚂 Railway Tracks (East)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="homes" class="bg-white">
+  <div class="section-inner">
+    <div class="listings-header">
+      <div><h2>Active Listings</h2><p>Discover your dream home in Henderson Survey</p></div>
+      <a href="#contact" style="color:#059669;font-weight:600">View All Listings →</a>
+    </div>
+    <div class="listings-grid">
+      <div class="listing-card">
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop" alt="36 Grove Crescent"><div class="listing-badge">Active</div></div>
+        <div class="listing-body"><div class="listing-price">$699,900</div><div class="listing-address">36 Grove Crescent, Brantford ON</div><div class="listing-specs"><span><strong>4</strong> beds</span><span><strong>3</strong> baths</span><span><strong>2,200</strong> sqft</span></div><a href="#contact" class="btn-dark">Schedule Showing</a></div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="32 Daniel Place"><div class="listing-badge">Active</div></div>
+        <div class="listing-body"><div class="listing-price">$849,900</div><div class="listing-address">32 Daniel Place, Brantford ON</div><div class="listing-specs"><span><strong>4</strong> beds</span><span><strong>3</strong> baths</span><span><strong>3,000</strong> sqft</span></div><a href="#contact" class="btn-dark">Schedule Showing</a></div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" alt="26 Belaire Road"><div class="listing-badge">Active</div></div>
+        <div class="listing-body"><div class="listing-price">$799,000</div><div class="listing-address">26 Belaire Road, Brantford ON</div><div class="listing-specs"><span><strong>4</strong> beds</span><span><strong>3</strong> baths</span><span><strong>3,200</strong> sqft</span></div><a href="#contact" class="btn-dark">Schedule Showing</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sales">
+  <div class="sales-inner">
+    <h2>Recent Sales</h2>
+    <div class="sales-grid">
+      <div class="sale-card"><div class="sale-price">$849,900</div><div class="sale-address">75 Henderson Ave</div><div class="sale-meta"><span class="sale-date">Sold Jan 2026</span><span class="sale-days">5 days</span></div></div>
+      <div class="sale-card"><div class="sale-price">$649,900</div><div class="sale-address">8 Pembroke Ave</div><div class="sale-meta"><span class="sale-date">Sold Jan 2026</span><span class="sale-days">12 days</span></div></div>
+      <div class="sale-card"><div class="sale-price">$725,000</div><div class="sale-address">Grove Crescent</div><div class="sale-meta"><span class="sale-date">Sold Dec 2025</span><span class="sale-days">8 days</span></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="schools" class="bg-gray">
+  <div class="section-inner">
+    <div class="section-header"><h2>Top-Rated Schools</h2><p>Excellent education options within the neighborhood</p></div>
+    <div class="schools-grid">
+      <div class="school-card blue">
+        <div class="school-name">James Hillier Public School</div>
+        <div class="school-type">Elementary (JK-8) · Public</div>
+        <ul class="school-facts">
+          <li><span class="check-blue">✓</span> Located within Henderson Survey</li>
+          <li><span class="check-blue">✓</span> Walking distance for most homes</li>
+          <li><span class="check-blue">✓</span> Named after Brantford-born inventor of the electron microscope</li>
+          <li><span class="check-blue">✓</span> Active parent community</li>
+        </ul>
+        <a href="#contact" class="btn-blue">View School Details</a>
+      </div>
+      <div class="school-card purple">
+        <div class="school-name">St. John's College</div>
+        <div class="school-type">Secondary (9-12) · Catholic</div>
+        <ul class="school-facts">
+          <li><span class="check-purple">✓</span> 1,400+ students enrolled</li>
+          <li><span class="check-purple">✓</span> Advanced Placement courses offered</li>
+          <li><span class="check-purple">✓</span> Steps from the Sky Acres area</li>
+          <li><span class="check-purple">✓</span> Sports teams: The Green Eagles</li>
+        </ul>
+        <a href="#contact" class="btn-purple">View School Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="amenities" class="bg-white">
+  <div class="section-inner">
+    <div class="section-header"><h2>Local Amenities</h2><p>Everything you need, right in your neighborhood</p></div>
+    <div class="amenities-grid">
+      <div class="amenity-card" style="background:#f0fdf4;border:2px solid #bbf7d0"><div class="amenity-icon">🌳</div><div class="amenity-title">Parks</div><div class="amenity-desc">Spring Gardens, Devon Down & Regent Park</div><a href="#contact" style="color:#166534;font-weight:600;font-size:14px">Explore →</a></div>
+      <div class="amenity-card" style="background:#fff7ed;border:2px solid #fed7aa"><div class="amenity-icon">🍽️</div><div class="amenity-title">Dining</div><div class="amenity-desc">Local restaurants, cafes & Brantford Golf Club</div><a href="#contact" style="color:#9a3412;font-weight:600;font-size:14px">See Top 10 →</a></div>
+      <div class="amenity-card" style="background:#eff6ff;border:2px solid #bfdbfe"><div class="amenity-icon">🎨</div><div class="amenity-title">Culture</div><div class="amenity-desc">Glenhyrst Art Gallery — open since 1914</div><a href="#contact" style="color:#1e40af;font-weight:600;font-size:14px">Learn More →</a></div>
+      <div class="amenity-card" style="background:#f5f3ff;border:2px solid #ddd6fe"><div class="amenity-icon">🛒</div><div class="amenity-title">Shopping</div><div class="amenity-desc">Minutes to downtown & major retailers</div><a href="#contact" style="color:#6d28d9;font-weight:600;font-size:14px">View All →</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta" id="contact">
+  <div class="cta-inner">
+    <h2>Ready to Call Henderson Survey Home?</h2>
+    <p>Let Ryan Campbell and The Crew guide you through finding your perfect home in Brantford's most sought-after neighborhood.</p>
+    <div class="cta-btns">
+      <a href="tel:5195550100" class="btn-white">📞 Call Ryan Now</a>
+      <a href="mailto:ryan@bensoncrew.ca" class="btn-outline">✉️ Get Free Valuation</a>
+    </div>
+    <p class="cta-note">Part of <strong>Benson Crew Real Estate</strong> · Brantford's #1 Team · Trusted by 1,000+ Families</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><h4>Henderson Survey</h4><p>Your complete guide to Brantford's premier neighborhood. Homes, schools, amenities, and community.</p></div>
+    <div class="footer-col"><h4>Real Estate</h4><ul><li><a href="#homes">Active Listings</a></li><li><a href="#contact">Recent Sales</a></li><li><a href="#contact">Market Data</a></li><li><a href="#contact">Free Valuation</a></li></ul></div>
+    <div class="footer-col"><h4>Neighborhood</h4><ul><li><a href="#about">About</a></li><li><a href="#schools">Schools</a></li><li><a href="#amenities">Parks & Amenities</a></li><li><a href="#contact">Events</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><p>Ryan Campbell<br>Benson Crew Real Estate<br>Brantford, Ontario<br><a href="tel:5195550100" style="color:#34d399">(519) 555-0100</a></p></div>
+  </div>
+  <div class="footer-bottom">© 2026 Benson Crew Real Estate. All rights reserved. | Ryan Campbell, Sales Representative | Real Broker Ontario Ltd.</div>
+</footer>
+
+</body>
+</html>
